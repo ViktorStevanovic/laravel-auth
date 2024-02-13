@@ -36,26 +36,29 @@
                                 {{ $project->used_languages }}
                             </td>
 
-                            {{-- <td>
-                                <a href="{{ route('admin.projects.show', $post) }}">
-                                    <button class="btn btn-sm btn-primary">
-                                        View
-                                    </button>
-                                </a>
-                                <a href="{{ route('admin.posts.edit', $post) }}">
-                                    <button class="btn btn-sm btn-success">
-                                        Edit
-                                    </button>
-                                </a>
-                                <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                            <td>
+                                <div class="d-flex mt-2 gap-1">
+                                    <a href="{{ route('admin.projects.show', $project) }}">
+                                        <button class="btn btn-sm btn-primary">
+                                            View
+                                        </button>
+                                    </a>
+                                    <a href="{{ route('admin.projects.edit', $project) }}">
+                                        <button class="btn btn-sm btn-success">
+                                            Edit
+                                        </button>
+                                    </a>
+
+                                </div>
+                                {{-- <form class="d-inline-block" action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
                                     <button class="btn btn-sm btn-warning" type="submit">
                                         Delete
                                     </button>
-                                </form>
-                            </td> --}}
+                                </form> --}}
+                            </td>
                         </tr>
                     @empty
                         <tr>
