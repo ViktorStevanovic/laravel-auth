@@ -38,22 +38,12 @@
 
                             <td>
                                 <div class="d-flex mt-2 gap-1">
-                                    <a href="{{ route('admin.projects.show', $project) }}">
-                                        <button class="btn btn-sm btn-primary">
-                                            View
-                                        </button>
-                                    </a>
-                                    <a href="{{ route('admin.projects.edit', $project) }}">
-                                        <button class="btn btn-sm btn-success">
-                                            Edit
-                                        </button>
-                                    </a>
-                                    <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                    <form class="d-inline-block" action="{{ route('admin.projects.restore', $project) }}" method="POST">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('PATCH')
     
                                         <button class="btn btn-sm btn-warning" type="submit">
-                                            Delete
+                                            Restore
                                         </button>
                                     </form>
                                 </div>

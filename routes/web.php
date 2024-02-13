@@ -29,5 +29,8 @@ Route::middleware('auth')
     ->prefix('admin')
     ->group(function () {
 
+        Route::get('/projects/deleted', [AdminProjectController::class, 'deletedProjects'])->name('projects.deleted');
+        Route::patch('/projects/deleted/{project}', [AdminProjectController::class, 'restoreProject'])->name('projects.restore');
+
         Route::resource('/projects', AdminProjectController::class);
     });
