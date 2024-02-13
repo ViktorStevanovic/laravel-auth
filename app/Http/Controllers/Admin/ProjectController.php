@@ -56,16 +56,34 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $project->update($data);
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
+    }
+
+    public function deletedProjects()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.deleted', compact('projects'));
+    }
+
+    public function restoreProject(string $id)
+    {
+        $project = Project::withTrashed()->where('id', $id)->first();
+        $project->restore();
+
+        $projects = Project::all();
+        return view('admin.projects.index', compact('projects'));
     }
 }
