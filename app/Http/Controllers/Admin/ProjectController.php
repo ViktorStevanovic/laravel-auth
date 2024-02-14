@@ -34,6 +34,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $newProject = Project::create($data);
+
         return redirect()->route('admin.projects.show', $newProject);
     }
 
