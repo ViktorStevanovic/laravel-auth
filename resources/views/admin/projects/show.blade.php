@@ -17,9 +17,9 @@
                             <a href="{{ $project->project_url }}" target="_blank" class="link-underline link-underline-opacity-0">{{ $project->project_url }}</a>
                         </p>
                         <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-success">Edit</a>
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="{{ '#modal' . $project->id}}">Delete</button>
 
                         <!-- Modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="{{ '#modal' . $project->id}}">Delete</button>
                         <div class="modal fade" id="{{ 'modal' . $project->id}}" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">

@@ -30,7 +30,8 @@ Route::middleware('auth')
     ->group(function () {
 
         Route::get('/projects/deleted', [AdminProjectController::class, 'deletedProjects'])->name('projects.deleted');
-        Route::patch('/projects/deleted/{project}', [AdminProjectController::class, 'restoreProject'])->name('projects.restore');
+        Route::patch('/projects/restore/{project}', [AdminProjectController::class, 'restoreProject'])->name('projects.restore');
+        Route::delete('/projects/deleted/{project}', [AdminProjectController::class, 'destroyProject'])->name('projects.deleted.destroy');
 
         Route::resource('/projects', AdminProjectController::class);
     });

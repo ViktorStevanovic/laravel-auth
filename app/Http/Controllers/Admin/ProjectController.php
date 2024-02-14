@@ -34,7 +34,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $newProject = Project::create($data);
-        return redirect()->route('admin.projects.show', $newProject->id);
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
@@ -60,7 +60,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $project->update($data);
-        return redirect()->route('admin.projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -83,7 +83,14 @@ class ProjectController extends Controller
         $project = Project::withTrashed()->where('id', $id)->first();
         $project->restore();
 
-        $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        return redirect()->route('admin.projects.show', $project);
+    }
+
+    public function destroyProject(string $id)
+    {
+        $project = Project::withTrashed()->where('id', $id)->first();
+        $project->forceDelete();
+
+        return redirect()->route('admin.projects.deleted');
     }
 }
