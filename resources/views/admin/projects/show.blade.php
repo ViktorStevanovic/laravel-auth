@@ -9,7 +9,7 @@
                 <div class="card">
                     <h5 class="card-header">Project {{ $project->id }}</h5>
                     <div class="card-body">
-                        <h2 class="card-title">{{ $project->name }}</h2>
+                        <h2 class="card-title">{{ $project->title }}</h2>
                         <p class="card-text">{{ $project->description }}</p>
                         <p class="card-text"><span class="fw-bold">Used Languages:</span> {{ $project->used_languages }}</p>
                         <p class="card-text">
